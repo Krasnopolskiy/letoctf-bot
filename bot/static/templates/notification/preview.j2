@@ -1,0 +1,1 @@
+{% if item.type == 0 %}🔒{% elif item.type == 1 %}🍻{% elif item.type == 2 %}📡{% endif %} {{ item.created_at.strftime('%a %d %H:%M') }} | {{ item.title }}

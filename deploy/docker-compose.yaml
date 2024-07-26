@@ -1,0 +1,64 @@
+name: ctf-bot
+
+services:
+  bot:
+    build:
+      context: ..
+      dockerfile: ./deploy/Dockerfile
+    command: [ "python3", "bot/main.py" ]
+    env_file:
+      - ./config/.env
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MINIO_HOST=http://ctf.minio:9000/
+      - BOT_API_URL=http://backend:8000
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - ctf-platform-net
+      - internal
+
+  mysql:
+    image: mysql
+    ports:
+      - "127.0.0.1:3308:3306"
+    env_file:
+      - ./config/.env
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "$MYSQL_USER", "-p$MYSQL_PASSWORD" ]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+    networks:
+      - internal
+
+  redis:
+    image: redis
+    ports:
+      - "127.0.0.1:6380:6379"
+    env_file:
+      - ./config/.env
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - internal
+
+networks:
+  internal:
+  ctf-platform-net:
+    external: true

@@ -1,0 +1,11 @@
+{% if teams %}
+<b>Рейтинг команд:</b>
+
+<b>Ваше место: {{ place }}</b>
+{% for team in teams %}
+
+{% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% elif loop.index == 3 %}🥉{% else %}{{ loop.index }}.{% endif %} {{ team.name }} - <code>{{ team.score }}</code>
+{% endfor %}
+{% else %}
+Рейтинг пуст
+{% endif %}
