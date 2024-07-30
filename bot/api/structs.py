@@ -39,6 +39,7 @@ class JoinTeamRequest(BaseModel):
 
 class UserStatistics(BaseModel):
     id: int
+    is_staff: bool
     username: str
     team: Team | None
     team_score: float
@@ -112,3 +113,8 @@ class Notification(BaseModel):
 
     class Config:
         json_encoders = {datetime: lambda v: v.isoformat()}
+
+
+class NotificationRecipient(BaseModel):
+    id: int
+    username: str

@@ -1,1 +1,1 @@
-{% if item.solved %}✅ {% endif %}{{ item.score }} | {% if item.hidden %}🔒 {% endif %}{{ item.name }}
+{% if item.solved %}✅ {% elif item.end %}⏳ {% endif %}{{ item.score }} | {% if item.hidden %}🔒 {% endif %}{{ item.name }}

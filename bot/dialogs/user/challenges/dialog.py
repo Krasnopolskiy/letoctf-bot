@@ -1,4 +1,5 @@
 from aiogram_dialog import Dialog
+
 from dialogs.user.challenges import windows
 from dispatcher import dp
 

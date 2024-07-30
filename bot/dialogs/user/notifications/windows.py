@@ -3,16 +3,17 @@ from operator import attrgetter
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.kbd import Button, Cancel, ScrollingGroup, Select, SwitchTo
 from aiogram_dialog.widgets.text import Const
+
 from dialogs.user.notifications.states import UserNotificationsStateGroup
 from dialogs.widgets import back
 from handlers.user.notifications import has_assets, list_notifications, render, select, send_assets
-from static.loader import load_template
+from static.loader import template_widget
 
 list_notifications = Window(
-    load_template("notification/list"),
+    template_widget("notification/list"),
     ScrollingGroup(
         Select(
-            load_template("notification/preview"),
+            template_widget("notification/preview"),
             item_id_getter=attrgetter("id"),
             items="notifications",
             id="notification_select",
@@ -28,8 +29,8 @@ list_notifications = Window(
 )
 
 render = Window(
-    load_template("notification/render"),
-    Button(Const("Приложенные файлы"), id="assets", on_click=send_assets, when=has_assets),
+    template_widget("notification/render"),
+    Button(Const("📦 Приложенные файлы"), id="assets", on_click=send_assets, when=has_assets),
     SwitchTo(back, id="back", state=UserNotificationsStateGroup.list),
     getter=render,
     state=UserNotificationsStateGroup.render,

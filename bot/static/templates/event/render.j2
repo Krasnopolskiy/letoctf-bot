@@ -9,5 +9,4 @@
 
 {% endif %}
 
-🗓 Время проведения:
-{% if start %}{{ start.strftime('%H:%M') }}{% endif %}{% if end %} - {{ end.strftime('%H:%M') }}{% endif %}
+🗓 Время проведения: {% if start %}{{ start.strftime('%H:%M') }}{% endif %}{% if end %} - {{ end.strftime('%H:%M') }}{% endif %}

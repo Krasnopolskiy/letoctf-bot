@@ -4,6 +4,7 @@ from aiogram_dialog import Window
 from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Button, Cancel, Checkbox, Row, ScrollingGroup, Select, SwitchTo
 from aiogram_dialog.widgets.text import Const
+
 from dialogs.user.challenges.states import UserChallengesStateGroup
 from dialogs.widgets import back
 from handlers.user.challenges import (
@@ -17,13 +18,13 @@ from handlers.user.challenges import (
     submit_hidden,
     toggle_solved,
 )
-from static.loader import load_template
+from static.loader import template_widget
 
 list_challenges = Window(
-    load_template("challenge/list"),
+    template_widget("challenge/list"),
     ScrollingGroup(
         Select(
-            load_template("challenge/preview"),
+            template_widget("challenge/preview"),
             item_id_getter=attrgetter("id"),
             items="challenges",
             id="challenge_select",
@@ -51,8 +52,8 @@ list_challenges = Window(
 )
 
 select = Window(
-    load_template("challenge/render"),
-    Button(Const("Приложенные файлы"), id="assets", on_click=send_assets, when=has_assets),
+    template_widget("challenge/render"),
+    Button(Const("📦 Приложенные файлы"), id="assets", on_click=send_assets, when=has_assets),
     Row(
         SwitchTo(back, id="back", state=UserChallengesStateGroup.list),
         SwitchTo(

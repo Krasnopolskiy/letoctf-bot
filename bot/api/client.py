@@ -1,10 +1,12 @@
 import jwt
 from aiohttp import ClientSession
+
 from api.structs import (
     Challenge,
     Event,
     JoinTeamRequest,
     Notification,
+    NotificationRecipient,
     SubmitChallengeRequest,
     TeamScore,
     Telegram,
@@ -161,3 +163,26 @@ class APIClient:
         async with self.session.get(url) as response:
             response.raise_for_status()
             return Notification(**await response.json())
+
+    async def get_notifications_staff(self) -> list[Notification]:
+        url = reverse(NotificationEndpoint.LIST_STAFF)
+        headers = await self.get_authorization_header()
+        async with self.session.get(url, headers=headers) as response:
+            response.raise_for_status()
+            notifications_data = await response.json()
+            return [Notification(**notification) for notification in notifications_data]
+
+    async def get_notification_staff(self, notification_id: int) -> Notification:
+        url = reverse(NotificationEndpoint.DETAIL_STAFF, id=notification_id)
+        headers = await self.get_authorization_header()
+        async with self.session.get(url, headers=headers) as response:
+            response.raise_for_status()
+            return Notification(**await response.json())
+
+    async def get_notification_recipients(self, notification_id: int) -> list[NotificationRecipient]:
+        url = reverse(NotificationEndpoint.RECIPIENTS, id=notification_id)
+        headers = await self.get_authorization_header()
+        async with self.session.get(url, headers=headers) as response:
+            response.raise_for_status()
+            recipients_data = await response.json()
+            return [NotificationRecipient(**recipient) for recipient in recipients_data]

@@ -1,11 +1,11 @@
 from aiogram_dialog import Dialog
 
-from dialogs.auth import windows
+from dialogs.admin.menu import windows
 from dispatcher import dp
 
 
-def auth_dialog():
+def menu_dialog():
     dialog = Dialog(
-        windows.auth,
+        windows.menu,
     )
     dp.include_router(dialog)

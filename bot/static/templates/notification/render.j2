@@ -2,9 +2,6 @@
 
 {% if type == 0 %}🔒 Личное сообщение{% elif type == 1 %}🍻 Сообщение для команды{% elif type == 2 %}📡 Сообщение для всех{% endif %}
 
-{% if description %}
-
-{{ description }}
-{% endif %}
+{% if description %}{{ description }}{% endif %}
 
 🗓 Отправлено: {{ created_at.strftime('%a %d %H:%M') }}

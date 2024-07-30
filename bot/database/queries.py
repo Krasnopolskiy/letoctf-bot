@@ -1,7 +1,8 @@
-from config.database import db
-from database.models import User
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from config.database import db
+from database.models import User
 
 engine = create_engine(url=db.url)
 DatabaseSession = sessionmaker(autocommit=False, autoflush=False, bind=engine)

@@ -41,6 +41,9 @@ class EventEndpoint(BaseEndpoint):
 class NotificationEndpoint(BaseEndpoint):
     LIST = "/api/notifications/"
     DETAIL = "/api/notifications/{id}/"
+    LIST_STAFF = "/api/staff/notifications/"
+    DETAIL_STAFF = "/api/staff/notifications/{id}/"
+    RECIPIENTS = "/api/staff/notifications/{id}/recipients/"
 
 
 def reverse(endpoint: BaseEndpoint, **kwargs) -> str:

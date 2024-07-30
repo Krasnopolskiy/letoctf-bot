@@ -4,11 +4,12 @@ from aiogram.types import CallbackQuery
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.common import Whenable
 from aiogram_dialog.widgets.kbd import Button
+from sqlalchemy import Select
+
 from api.client import APIClient
 from api.structs import Event
 from config.s3 import s3
 from dialogs.user.events.states import UserEventsStateGroup
-from sqlalchemy import Select
 
 
 def has_assets(data: dict, _: Whenable, __: DialogManager) -> bool:

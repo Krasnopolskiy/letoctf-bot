@@ -1,0 +1,13 @@
+<b>⚠️️ Вы собираетесь отправить сообщение:</b>
+
+<b>{{ notification.title }}</b>
+{% if notification.description %}
+
+{{ notification.description }}
+{% endif %}
+
+Сообщение получат:
+{% for recipient in recipients %}
+
+{{ loop.index }}. {{ recipient.username }}
+{% endfor %}

@@ -1,6 +1,7 @@
 from aiogram.types import Message
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.input import MessageInput
+
 from api.client import APIClient
 from api.structs import JoinTeamRequest
 from handlers.auth import get_user
