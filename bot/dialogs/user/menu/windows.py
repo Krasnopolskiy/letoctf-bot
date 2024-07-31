@@ -1,5 +1,5 @@
 from aiogram_dialog import Window
-from aiogram_dialog.widgets.kbd import Row, Start
+from aiogram_dialog.widgets.kbd import Row, Start, Url
 from aiogram_dialog.widgets.text import Const
 
 from dialogs.admin.menu.states import AdminMenuStateGroup
@@ -22,10 +22,11 @@ menu = Window(
     ),
     Row(
         Start(Const("🎯 Задачи"), id="challenges", state=UserChallengesStateGroup.list),
-        Start(Const("📆 Мероприятия"), id="events", state=UserEventsStateGroup.list),
+        Start(Const("📆 Расписание"), id="events", state=UserEventsStateGroup.list),
         Start(Const("📫 Сообщения"), id="notifications", state=UserNotificationsStateGroup.list),
     ),
     Start(Const("🆘 Поддержка"), id="support", state=UserSupportStateGroup.support),
+    Url(Const("📦 Диск"), Const("https://owncloud.letoctf.tech-team-aciso.ru/s/Hlyx5NCX1V3sfbu")),
     Start(Const("🛠 Администрирование"), id="admin", state=AdminMenuStateGroup.menu, when=is_staff),
     state=UserMenuStateGroup.menu,
     getter=get_user_statistics,

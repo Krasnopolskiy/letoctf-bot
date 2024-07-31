@@ -10,7 +10,7 @@ from dialogs.widgets import back
 from handlers.user.support import get_support_channels, set_channel, submit
 
 support = Window(
-    Const("🆘 Напишите о проблеме и выберете категорию:"),
+    Const("🆘 Напишите обращение и выберете категорию:"),
     Radio(
         Format("🔘 {item.value}"),
         Format("⚪️ {item.value}"),

@@ -1,5 +1,14 @@
 {% if events %}
-Мероприятия:
+{% for event in events %}
+{% if event.start %}{{ event.start.strftime('%H:%M') }}{% endif %}{% if event.end %} - {{ event.end.strftime('%H:%M') }}{% endif %} | <b>{{ event.title }}</b>
+{% if event.speaker %}
+📣 {{ event.speaker }}{% endif %}{% if event.affiliation %} от команды {{ event.affiliation }}
+{% endif %}
+{% if event.files %}
+📦 К мероприятию приложены файлы
+{% endif %}
+
+{% endfor %}
 {% else %}
 Нет доступных мероприятий
 {% endif %}

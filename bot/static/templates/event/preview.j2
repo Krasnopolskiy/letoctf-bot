@@ -1,1 +1,1 @@
-{{ item.start.strftime('%H:%M') }} | {{ item.title }}
+{{ item.start.strftime('%H:%M') }} | {{ item.title|truncate(30) }}
