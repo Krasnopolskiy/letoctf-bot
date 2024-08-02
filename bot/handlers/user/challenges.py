@@ -20,10 +20,10 @@ def submit_request(message: Message, user_id: int) -> SubmitChallengeRequest:
     )
 
 
-def is_not_solved(data: dict, _: Whenable, __: DialogManager):
+def can_be_submitted(data: dict, _: Whenable, __: DialogManager):
     selected = json.loads(data["dialog_data"]["selected"])
     challenge = Challenge(**selected)
-    return not challenge.solved
+    return not challenge.solved and not challenge.review
 
 
 def has_assets(data: dict, _: Whenable, __: DialogManager) -> bool:
@@ -32,10 +32,10 @@ def has_assets(data: dict, _: Whenable, __: DialogManager) -> bool:
 
 
 def filter_solved_challenges(dialog_manager: DialogManager, challenges: list[Challenge]) -> list[Challenge]:
-    show_solved = dialog_manager.dialog_data.get("show_solved", True)
+    show_solved = dialog_manager.dialog_data.get("show_solved", False)
     if not show_solved:
-        challenges = filter(lambda challenge: not challenge.solved, challenges)
-    return list(challenges)
+        challenges = [challenge for challenge in challenges if not challenge.solved]
+    return challenges
 
 
 async def list_challenges(event_chat: Chat, dialog_manager: DialogManager, **kwargs) -> dict[str, list[Challenge]]:

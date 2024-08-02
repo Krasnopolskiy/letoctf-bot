@@ -8,8 +8,8 @@ from aiogram_dialog.widgets.text import Const
 from dialogs.user.challenges.states import UserChallengesStateGroup
 from dialogs.widgets import back
 from handlers.user.challenges import (
+    can_be_submitted,
     has_assets,
-    is_not_solved,
     list_challenges,
     render,
     select,
@@ -43,7 +43,7 @@ list_challenges = Window(
             Const("🙈 Скрыть решенные"),
             Const("👀 Показать решенные"),
             id="toggle_solved",
-            default=True,
+            default=False,
             on_state_changed=toggle_solved,
         ),
     ),
@@ -60,7 +60,7 @@ select = Window(
             Const("🚩 Сдать флаг"),
             id="submit",
             state=UserChallengesStateGroup.submit,
-            when=is_not_solved,
+            when=can_be_submitted,
         ),
     ),
     getter=render,

@@ -60,7 +60,7 @@ class Challenge(BaseModel):
     description: str | None
     score: int
     team: bool
-    dynamic: bool
+    review: bool
     hidden: bool
     start: datetime | None
     end: datetime | None
