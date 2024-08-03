@@ -1,5 +1,4 @@
 from aiogram import Dispatcher
-
 from config.redis import redis
 
 storage = redis.storage

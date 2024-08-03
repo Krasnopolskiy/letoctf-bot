@@ -1,6 +1,5 @@
 import jwt
 from aiohttp import ClientSession
-
 from api.structs import (
     Challenge,
     Event,
@@ -8,6 +7,7 @@ from api.structs import (
     Notification,
     NotificationRecipient,
     SubmitChallengeRequest,
+    SubmitFeedbackRequest,
     TeamScore,
     Telegram,
     TokenPair,
@@ -150,6 +150,12 @@ class APIClient:
         async with self.session.get(url) as response:
             response.raise_for_status()
             return Event(**await response.json())
+
+    async def submit_feedback(self, event_id: int, request: SubmitFeedbackRequest):
+        url = reverse(EventEndpoint.FEEDBACK, id=event_id)
+        headers = await self.get_authorization_header()
+        async with self.session.post(url, json=request.model_dump(), headers=headers) as response:
+            response.raise_for_status()
 
     async def get_notifications(self, user_id: int | None = None) -> list[Notification]:
         url = reverse(NotificationEndpoint.LIST) + (f"?user_id={user_id}" if user_id else "")

@@ -4,7 +4,6 @@ from aiogram.types import CallbackQuery, Message
 from aiogram.utils.markdown import html_decoration as hd
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.input import MessageInput
-
 from config.bot import bot
 from dialogs.user.support.channels import SupportChannel
 
@@ -33,4 +32,4 @@ async def set_channel(_: CallbackQuery, __: Any, dialog_manager: DialogManager, 
 
 
 async def set_default_channel(_: Any, dialog_manager: DialogManager, **kwargs):
-    await dialog_manager.dialog().find("tags").set_checked(dialog_manager.event, "other", dialog_manager)
+    await dialog_manager.dialog().find("channel").set_checked(dialog_manager.event, "OTHER", dialog_manager)

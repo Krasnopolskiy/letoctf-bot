@@ -2,7 +2,6 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 from aiogram_dialog import DialogManager
-
 from dialogs.auth.states import AuthStateGroup
 from dialogs.user.menu.states import UserMenuStateGroup
 from handlers.auth import check_telegram_linked

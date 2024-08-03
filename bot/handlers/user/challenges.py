@@ -5,7 +5,6 @@ from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.common import Whenable
 from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Button, ManagedCheckbox, Select
-
 from api.client import APIClient
 from api.structs import Challenge, SubmitChallengeRequest
 from config.s3 import s3

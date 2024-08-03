@@ -1,7 +1,6 @@
 from aiogram.types import Message
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.input import MessageInput
-
 from api.client import APIClient
 from api.structs import Telegram
 from database.models import User

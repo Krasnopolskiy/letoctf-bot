@@ -103,6 +103,13 @@ class Event(BaseModel):
         json_encoders = {datetime: lambda v: v.isoformat()}
 
 
+class SubmitFeedbackRequest(BaseModel):
+    score: int
+    text: str
+    user: int
+    event: int
+
+
 class Notification(BaseModel):
     id: int
     title: str

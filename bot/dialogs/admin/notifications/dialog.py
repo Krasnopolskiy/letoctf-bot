@@ -1,5 +1,4 @@
 from aiogram_dialog import Dialog
-
 from dialogs.admin.notifications import windows
 from dispatcher import dp
 

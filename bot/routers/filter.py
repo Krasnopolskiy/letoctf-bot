@@ -1,5 +1,4 @@
 from aiogram.types import Message
-
 from database.queries import find_user_by_tg_id
 
 

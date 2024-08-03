@@ -1,7 +1,6 @@
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.kbd import Row, Start, Url
 from aiogram_dialog.widgets.text import Const
-
 from dialogs.admin.menu.states import AdminMenuStateGroup
 from dialogs.user.challenges.states import UserChallengesStateGroup
 from dialogs.user.events.states import UserEventsStateGroup

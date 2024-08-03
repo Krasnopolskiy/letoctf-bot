@@ -1,5 +1,4 @@
 from aiogram_dialog import Dialog
-
 from dialogs.auth import windows
 from dispatcher import dp
 

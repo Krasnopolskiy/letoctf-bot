@@ -1,6 +1,5 @@
 from aiogram.types import Chat
 from aiogram_dialog import DialogManager
-
 from api.client import APIClient
 from handlers.auth import get_user
 

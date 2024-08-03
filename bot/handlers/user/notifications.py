@@ -4,7 +4,6 @@ from aiogram.types import CallbackQuery, Chat
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.common import Whenable
 from aiogram_dialog.widgets.kbd import Button, Select
-
 from api.client import APIClient
 from api.structs import Notification
 from config.s3 import s3

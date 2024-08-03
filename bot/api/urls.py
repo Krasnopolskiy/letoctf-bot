@@ -36,6 +36,7 @@ class ScoreboardEndpoint(BaseEndpoint):
 class EventEndpoint(BaseEndpoint):
     LIST = "/api/events/"
     DETAIL = "/api/events/{id}/"
+    FEEDBACK = "/api/events/{id}/feedback/"
 
 
 class NotificationEndpoint(BaseEndpoint):

@@ -1,5 +1,4 @@
 import structlog
-
 from config.bot import bot
 from dialogs.register import register_dialogs
 from dispatcher import dp

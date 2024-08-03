@@ -4,7 +4,6 @@ from aiogram_dialog import Window
 from aiogram_dialog.widgets.input import MessageInput
 from aiogram_dialog.widgets.kbd import Button, Cancel, Checkbox, Row, ScrollingGroup, Select, SwitchTo
 from aiogram_dialog.widgets.text import Const
-
 from dialogs.user.challenges.states import UserChallengesStateGroup
 from dialogs.widgets import back
 from handlers.user.challenges import (

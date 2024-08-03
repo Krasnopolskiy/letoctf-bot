@@ -3,7 +3,6 @@ from operator import attrgetter
 from aiogram_dialog import Window
 from aiogram_dialog.widgets.kbd import Button, Cancel, ScrollingGroup, Select, SwitchTo
 from aiogram_dialog.widgets.text import Const
-
 from dialogs.user.notifications.states import UserNotificationsStateGroup
 from dialogs.widgets import back
 from handlers.user.notifications import has_assets, list_notifications, render, select, send_assets
